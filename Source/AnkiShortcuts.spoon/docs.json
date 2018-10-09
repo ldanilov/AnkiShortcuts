@@ -1,0 +1,146 @@
+[
+  {
+    "Command": [],
+    "Constant": [],
+    "Constructor": [],
+    "Deprecated": [],
+    "Field": [],
+    "Function": [],
+    "Method": [
+      {
+        "def": "AnkiShortcuts:bindHotkeys()",
+        "desc": "Binds hotkeys for Anki Shortcuts.",
+        "doc": "Binds hotkeys for Anki Shortcuts.\n\nParameters:\n * mapping - A table containing hotkey details for the following items:\n  * setDeck - for choosing a Deck from current Anki list (usually {hyper, \"D\"})\n  * setTag - for setting a tag (e.g. {hyper, \"T\"})\n  * setQuestion - for saving selected text as a question (usually {hyper, \"[\"})\n  * setAnswerSend1Note - for saving selected answer and sending 1 Note to Anki (Q->A) (usually {hyper, \"]\"})\n  * setAnswerSend2Notes - for saving selected answer and sending 2 Notes to Anki (Q->A and A->Q) (usually {hyper, \"\\\"})\n\nA configuration example can be:\n```\nlocal hyper = {\"ctrl\", \"alt\", \"cmd\"}\nspoon.AnkiShortcuts:bindHotkeys({\n  setDeck = {hyper, \"D\"},\n  setTag = {hyper, \"T\"},\n  setQuestion = {hyper, \"[\"},\n  setAnswerSend1Note = {hyper, \"]\"},\n  setAnswerSend2Notes = {hyper, \"\\\"}\n})\n```",
+        "name": "bindHotkeys",
+        "parameters": [
+          " * mapping - A table containing hotkey details for the following items:",
+          "  * setDeck - for choosing a Deck from current Anki list (usually {hyper, \"D\"})",
+          "  * setTag - for setting a tag (e.g. {hyper, \"T\"})",
+          "  * setQuestion - for saving selected text as a question (usually {hyper, \"[\"})",
+          "  * setAnswerSend1Note - for saving selected answer and sending 1 Note to Anki (Q->A) (usually {hyper, \"]\"})",
+          "  * setAnswerSend2Notes - for saving selected answer and sending 2 Notes to Anki (Q->A and A->Q) (usually {hyper, \"\\\"})"
+        ],
+        "signature": "AnkiShortcuts:bindHotkeys()",
+        "stripped_doc": "A configuration example can be:\n```\nlocal hyper = {\"ctrl\", \"alt\", \"cmd\"}\nspoon.AnkiShortcuts:bindHotkeys({\n  setDeck = {hyper, \"D\"},\n  setTag = {hyper, \"T\"},\n  setQuestion = {hyper, \"[\"},\n  setAnswerSend1Note = {hyper, \"]\"},\n  setAnswerSend2Notes = {hyper, \"\\\"}\n})\n```",
+        "type": "Method"
+      }
+    ],
+    "Variable": [
+      {
+        "def": "AnkiShortcuts.addContext",
+        "desc": "Toggle whether you want to add any Context to ",
+        "doc": "Toggle whether you want to add any Context to \nthe bottom of each Question. (Default: true)",
+        "name": "addContext",
+        "signature": "AnkiShortcuts.addContext",
+        "stripped_doc": "the bottom of each Question. (Default: true)",
+        "type": "Variable"
+      },
+      {
+        "def": "AnkiShortcuts.addWinTitleToContext",
+        "desc": "Toggle whether you want to add a Title of the Window",
+        "doc": "Toggle whether you want to add a Title of the Window\nin which you are selecting Question/Answer to \nthe bottom of each Question. (Default: true)",
+        "name": "addWinTitleToContext",
+        "signature": "AnkiShortcuts.addWinTitleToContext",
+        "stripped_doc": "in which you are selecting Question/Answer to \nthe bottom of each Question. (Default: true)",
+        "type": "Variable"
+      },
+      {
+        "def": "AnkiShortcuts.ankiConUrl",
+        "desc": "URL of the AnkiConnect Plug-in server. (Default: 'http://localhost:8765')",
+        "doc": "URL of the AnkiConnect Plug-in server. (Default: 'http://localhost:8765')",
+        "name": "ankiConUrl",
+        "signature": "AnkiShortcuts.ankiConUrl",
+        "stripped_doc": "",
+        "type": "Variable"
+      },
+      {
+        "def": "AnkiShortcuts.ankiConVersion",
+        "desc": "Version of the AnkiConnect Plug-in from https://github.com/FooSoft/anki-connect",
+        "doc": "Version of the AnkiConnect Plug-in from https://github.com/FooSoft/anki-connect\n(Default: 6)",
+        "name": "ankiConVersion",
+        "signature": "AnkiShortcuts.ankiConVersion",
+        "stripped_doc": "(Default: 6)",
+        "type": "Variable"
+      },
+      {
+        "def": "AnkiShortcuts.deckName",
+        "desc": "Deck name we should use at start-up. (Default: '')",
+        "doc": "Deck name we should use at start-up. (Default: '')",
+        "name": "deckName",
+        "signature": "AnkiShortcuts.deckName",
+        "stripped_doc": "",
+        "type": "Variable"
+      }
+    ],
+    "desc": "AnkiShortcuts was built to help you speed up the process of adding Question/Answer notes to your [Anki](https://apps.ankiweb.net) deck on OSX. It uses [AnkiConnect plug-in](https://ankiweb.net/shared/info/2055492159) which hosts a small local webserver and allows AnkiShortcuts to interact with Anki app via REST API. ",
+    "doc": "AnkiShortcuts was built to help you speed up the process of adding Question/Answer notes to your [Anki](https://apps.ankiweb.net) deck on OSX. It uses [AnkiConnect plug-in](https://ankiweb.net/shared/info/2055492159) which hosts a small local webserver and allows AnkiShortcuts to interact with Anki app via REST API. \n\nDownload: [https://github.com/ldanilov/AnkiShortcuts/raw/master/Spoons/AnkiShortcuts.spoon.zip](https://github.com/ldanilov/AnkiShortcuts/raw/master/Spoons/AnkiShortcuts.spoon.zip)\n\n### AnkiShortcuts lets you:\n- **Send new Question/Answer** cards with simple shortcuts:\n   - `[Ctrl, Opt, Cmd] + [`\n      - **Save** current cursor selection as a **Question**.\n   - `[Ctrl, Opt, Cmd] + ]`\n      1. **Save** current cursor selection as an **Answer**\n      2. **Send** it as a new Note to Anki.\n   - `[Ctrl, Opt, Cmd] + \\`\n      1. Does the same as **]**\n      2. But instead of one card, it sends **two** cards, flipping Question in place of the Answer.\n- `[Ctrl, Opt, Cmd] + D`\n   1. **Get** all Deck Names from your Anki app.\n   2. **Select** one of them to use going forward.\n- `[Ctrl, Opt, Cmd] + T`\n   - **Set a Tag** value to be used on all new Notes going forward.\n- `[Ctrl, Opt, Cmd] + X`\n   - **Set a Context** value to be used on all new Notes going forward.\n      - This text is added underneath each Question, as an unordered list.\n      - Adding a Context and adding Title of a Window to Context are both Enabled by default. \n         - You may disable by setting `addContext` or `addWinTitleToContext` to `false`.\n\n## Getting Started\n### Prerequisites\n- macOS High Sierra \n   - works on v10.13.6\n- Anki v2.1\n   - https://apps.ankiweb.net/index.html#mac\n- Hammerspoon v0.9.70\n   - https://github.com/Hammerspoon/hammerspoon/releases/tag/0.9.70\n- AnkiConnect v6\n   - https://ankiweb.net/shared/info/2055492159\n\n### Installing\n1. Install Prerequisites\n2. Install AnkiShortcuts Spoon from [https://github.com/ldanilov/AnkiShortcuts/raw/master/Spoons/AnkiShortcuts.spoon.zip](https://github.com/ldanilov/AnkiShortcuts/raw/master/Spoons/AnkiShortcuts.spoon.zip)\n3. Configure shortcuts by adding the following to your `~/.hammerspoon/init.lua`\n   ```\n   local hyper = {\"ctrl\", \"alt\", \"cmd\"}\n   spoon.AnkiShortcuts:bindHotkeys(\n     {\n       setDeck = {hyper, \"D\"},\n       setTag = {hyper, \"T\"},\n       setQuestion = {hyper, \"[\"},\n       setAnswerSend1Note = {hyper, \"]\"},\n       setAnswerSend2Notes = {hyper, \"\\\\\"},\n       toggleListener = {hyper, \"N\"},\n       setContext = {hyper, \"X\"},\n     }\n   )\n   ```\n4. **(optional)** Set Configurable values in your `~/.hammerspoon/init.lua`  \n   - `spoon.AnkiShortcuts.addContext` (Default `true`)\n   - `spoon.AnkiShortcuts.addWinTitleToContext` (Default `true`)\n   - `spoon.AnkiShortcuts.deckName` (Default `\"\"`)\n   - See more in API Overview\n\n### Running\n1. Choose a Deck to use via shortcut `setDeck`.\n2. **(optional)** Choose a Tag to use via shortcut `setTag` (Default `\"\"`)\n3. Steps to send your first Note to Anki:\n   - Select a chunk of text somewhere (from Browser, PDF file, etc.).\n      - ex: \"`Anki is a program which makes remembering things easy.`\"\n   - Press shortcut `setQuestion`. This will be your Question.\n   - Select a chunk of text somewhere (from Browser, PDF file, etc.).\n      - ex: \"`remembering`\"\n   - Press shortcut `setAnswerSend1Note`. \n      - This will be your Answer\n      - It will be sent to Anki right away.\n      - An alert will pop up saying that a Note was added.\n   - A note was added:\n      - **Question**\n      ```\n      Anki is a program which makes ___________ things easy. \n\n      Context:\n        - Anki - powerful, intelligent flashcards - Google Chrome\n      ```\n      - **Answer**\n      ```\n      remembering\n      ```\n\n### Building\n- Each build needs to generate a new `docs.json` and `README.md` files. Follow these steps:\n  - Clone https://github.com/Hamerspoon/hammerspoon\n  - Install the required Python dependencies (e.g. pip install --user -r requirements.txt in the Hammerspoon repo)\n  - Specify `HAMMERSPOON_REPO` variable in `env.make` (see env.make.example)\n- Run `make` after any updates to Source/* files. It regenerates `README.md`, `docs.json`, and `Spoons/AnkiShortcuts.spoon.zip`\n\n### Known Issues\n- Some text, if selected as an Answer, will crash Hammerspoon. For example: \"..\"\n- Does not check if Anki app is running, so in that case Hammerspoon Console returns an obscure error.\n- It takes a few seconds to send the **first** Note to Anki. Subsequent Notes are sent in under a second.\n\n### Ideas\n- (easy) Add color to successful/unsuccessful addition of Q/A.\n- (easy) Start Anki if the app is not running.\n- (hard) Find a way to capture a LaTeX from PDF (or otherwise) and add it as MathJax.\n- (easy) Add some menu so user doen't need to reply on shortcuts for everything.\n- (medium) Allow user define their own Q/A template (i.e. where to put Context and other info)\n- (easy) Lookup existing Tags in current Deck; let user choose one of them.\n\n### Other Notes\n- For more info about benefits of using a tool like Anki, check out [Michael Nielsen's post \"Augmenting Long-term Memory\"](http://augmentingcognition.com/ltm.html).\n- Known issues may or may not get fixed depending on how annoying they get for me.\n- Besides making a useful tool, this project proved a good reason to learn Lua. However, if something doesn't work out for you because I missed something, sorry about that. Feel free to clone, tweak, and submit a pull request.",
+    "items": [
+      {
+        "def": "AnkiShortcuts.addContext",
+        "desc": "Toggle whether you want to add any Context to ",
+        "doc": "Toggle whether you want to add any Context to \nthe bottom of each Question. (Default: true)",
+        "name": "addContext",
+        "signature": "AnkiShortcuts.addContext",
+        "stripped_doc": "the bottom of each Question. (Default: true)",
+        "type": "Variable"
+      },
+      {
+        "def": "AnkiShortcuts.addWinTitleToContext",
+        "desc": "Toggle whether you want to add a Title of the Window",
+        "doc": "Toggle whether you want to add a Title of the Window\nin which you are selecting Question/Answer to \nthe bottom of each Question. (Default: true)",
+        "name": "addWinTitleToContext",
+        "signature": "AnkiShortcuts.addWinTitleToContext",
+        "stripped_doc": "in which you are selecting Question/Answer to \nthe bottom of each Question. (Default: true)",
+        "type": "Variable"
+      },
+      {
+        "def": "AnkiShortcuts.ankiConUrl",
+        "desc": "URL of the AnkiConnect Plug-in server. (Default: 'http://localhost:8765')",
+        "doc": "URL of the AnkiConnect Plug-in server. (Default: 'http://localhost:8765')",
+        "name": "ankiConUrl",
+        "signature": "AnkiShortcuts.ankiConUrl",
+        "stripped_doc": "",
+        "type": "Variable"
+      },
+      {
+        "def": "AnkiShortcuts.ankiConVersion",
+        "desc": "Version of the AnkiConnect Plug-in from https://github.com/FooSoft/anki-connect",
+        "doc": "Version of the AnkiConnect Plug-in from https://github.com/FooSoft/anki-connect\n(Default: 6)",
+        "name": "ankiConVersion",
+        "signature": "AnkiShortcuts.ankiConVersion",
+        "stripped_doc": "(Default: 6)",
+        "type": "Variable"
+      },
+      {
+        "def": "AnkiShortcuts:bindHotkeys()",
+        "desc": "Binds hotkeys for Anki Shortcuts.",
+        "doc": "Binds hotkeys for Anki Shortcuts.\n\nParameters:\n * mapping - A table containing hotkey details for the following items:\n  * setDeck - for choosing a Deck from current Anki list (usually {hyper, \"D\"})\n  * setTag - for setting a tag (e.g. {hyper, \"T\"})\n  * setQuestion - for saving selected text as a question (usually {hyper, \"[\"})\n  * setAnswerSend1Note - for saving selected answer and sending 1 Note to Anki (Q->A) (usually {hyper, \"]\"})\n  * setAnswerSend2Notes - for saving selected answer and sending 2 Notes to Anki (Q->A and A->Q) (usually {hyper, \"\\\"})\n\nA configuration example can be:\n```\nlocal hyper = {\"ctrl\", \"alt\", \"cmd\"}\nspoon.AnkiShortcuts:bindHotkeys({\n  setDeck = {hyper, \"D\"},\n  setTag = {hyper, \"T\"},\n  setQuestion = {hyper, \"[\"},\n  setAnswerSend1Note = {hyper, \"]\"},\n  setAnswerSend2Notes = {hyper, \"\\\"}\n})\n```",
+        "name": "bindHotkeys",
+        "parameters": [
+          " * mapping - A table containing hotkey details for the following items:",
+          "  * setDeck - for choosing a Deck from current Anki list (usually {hyper, \"D\"})",
+          "  * setTag - for setting a tag (e.g. {hyper, \"T\"})",
+          "  * setQuestion - for saving selected text as a question (usually {hyper, \"[\"})",
+          "  * setAnswerSend1Note - for saving selected answer and sending 1 Note to Anki (Q->A) (usually {hyper, \"]\"})",
+          "  * setAnswerSend2Notes - for saving selected answer and sending 2 Notes to Anki (Q->A and A->Q) (usually {hyper, \"\\\"})"
+        ],
+        "signature": "AnkiShortcuts:bindHotkeys()",
+        "stripped_doc": "A configuration example can be:\n```\nlocal hyper = {\"ctrl\", \"alt\", \"cmd\"}\nspoon.AnkiShortcuts:bindHotkeys({\n  setDeck = {hyper, \"D\"},\n  setTag = {hyper, \"T\"},\n  setQuestion = {hyper, \"[\"},\n  setAnswerSend1Note = {hyper, \"]\"},\n  setAnswerSend2Notes = {hyper, \"\\\"}\n})\n```",
+        "type": "Method"
+      },
+      {
+        "def": "AnkiShortcuts.deckName",
+        "desc": "Deck name we should use at start-up. (Default: '')",
+        "doc": "Deck name we should use at start-up. (Default: '')",
+        "name": "deckName",
+        "signature": "AnkiShortcuts.deckName",
+        "stripped_doc": "",
+        "type": "Variable"
+      }
+    ],
+    "name": "AnkiShortcuts",
+    "stripped_doc": "\nDownload: [https://github.com/ldanilov/AnkiShortcuts/raw/master/Spoons/AnkiShortcuts.spoon.zip](https://github.com/ldanilov/AnkiShortcuts/raw/master/Spoons/AnkiShortcuts.spoon.zip)\n\n### AnkiShortcuts lets you:\n- **Send new Question/Answer** cards with simple shortcuts:\n   - `[Ctrl, Opt, Cmd] + [`\n      - **Save** current cursor selection as a **Question**.\n   - `[Ctrl, Opt, Cmd] + ]`\n      1. **Save** current cursor selection as an **Answer**\n      2. **Send** it as a new Note to Anki.\n   - `[Ctrl, Opt, Cmd] + \\`\n      1. Does the same as **]**\n      2. But instead of one card, it sends **two** cards, flipping Question in place of the Answer.\n- `[Ctrl, Opt, Cmd] + D`\n   1. **Get** all Deck Names from your Anki app.\n   2. **Select** one of them to use going forward.\n- `[Ctrl, Opt, Cmd] + T`\n   - **Set a Tag** value to be used on all new Notes going forward.\n- `[Ctrl, Opt, Cmd] + X`\n   - **Set a Context** value to be used on all new Notes going forward.\n      - This text is added underneath each Question, as an unordered list.\n      - Adding a Context and adding Title of a Window to Context are both Enabled by default. \n         - You may disable by setting `addContext` or `addWinTitleToContext` to `false`.\n\n## Getting Started\n### Prerequisites\n- macOS High Sierra \n   - works on v10.13.6\n- Anki v2.1\n   - https://apps.ankiweb.net/index.html#mac\n- Hammerspoon v0.9.70\n   - https://github.com/Hammerspoon/hammerspoon/releases/tag/0.9.70\n- AnkiConnect v6\n   - https://ankiweb.net/shared/info/2055492159\n\n### Installing\n1. Install Prerequisites\n2. Install AnkiShortcuts Spoon from [https://github.com/ldanilov/AnkiShortcuts/raw/master/Spoons/AnkiShortcuts.spoon.zip](https://github.com/ldanilov/AnkiShortcuts/raw/master/Spoons/AnkiShortcuts.spoon.zip)\n3. Configure shortcuts by adding the following to your `~/.hammerspoon/init.lua`\n   ```\n   local hyper = {\"ctrl\", \"alt\", \"cmd\"}\n   spoon.AnkiShortcuts:bindHotkeys(\n     {\n       setDeck = {hyper, \"D\"},\n       setTag = {hyper, \"T\"},\n       setQuestion = {hyper, \"[\"},\n       setAnswerSend1Note = {hyper, \"]\"},\n       setAnswerSend2Notes = {hyper, \"\\\\\"},\n       toggleListener = {hyper, \"N\"},\n       setContext = {hyper, \"X\"},\n     }\n   )\n   ```\n4. **(optional)** Set Configurable values in your `~/.hammerspoon/init.lua`  \n   - `spoon.AnkiShortcuts.addContext` (Default `true`)\n   - `spoon.AnkiShortcuts.addWinTitleToContext` (Default `true`)\n   - `spoon.AnkiShortcuts.deckName` (Default `\"\"`)\n   - See more in API Overview\n\n### Running\n1. Choose a Deck to use via shortcut `setDeck`.\n2. **(optional)** Choose a Tag to use via shortcut `setTag` (Default `\"\"`)\n3. Steps to send your first Note to Anki:\n   - Select a chunk of text somewhere (from Browser, PDF file, etc.).\n      - ex: \"`Anki is a program which makes remembering things easy.`\"\n   - Press shortcut `setQuestion`. This will be your Question.\n   - Select a chunk of text somewhere (from Browser, PDF file, etc.).\n      - ex: \"`remembering`\"\n   - Press shortcut `setAnswerSend1Note`. \n      - This will be your Answer\n      - It will be sent to Anki right away.\n      - An alert will pop up saying that a Note was added.\n   - A note was added:\n      - **Question**\n      ```\n      Anki is a program which makes ___________ things easy. \n\n      Context:\n        - Anki - powerful, intelligent flashcards - Google Chrome\n      ```\n      - **Answer**\n      ```\n      remembering\n      ```\n\n### Building\n- Each build needs to generate a new `docs.json` and `README.md` files. Follow these steps:\n  - Clone https://github.com/Hamerspoon/hammerspoon\n  - Install the required Python dependencies (e.g. pip install --user -r requirements.txt in the Hammerspoon repo)\n  - Specify `HAMMERSPOON_REPO` variable in `env.make` (see env.make.example)\n- Run `make` after any updates to Source/* files. It regenerates `README.md`, `docs.json`, and `Spoons/AnkiShortcuts.spoon.zip`\n\n### Known Issues\n- Some text, if selected as an Answer, will crash Hammerspoon. For example: \"..\"\n- Does not check if Anki app is running, so in that case Hammerspoon Console returns an obscure error.\n- It takes a few seconds to send the **first** Note to Anki. Subsequent Notes are sent in under a second.\n\n### Ideas\n- (easy) Add color to successful/unsuccessful addition of Q/A.\n- (easy) Start Anki if the app is not running.\n- (hard) Find a way to capture a LaTeX from PDF (or otherwise) and add it as MathJax.\n- (easy) Add some menu so user doen't need to reply on shortcuts for everything.\n- (medium) Allow user define their own Q/A template (i.e. where to put Context and other info)\n- (easy) Lookup existing Tags in current Deck; let user choose one of them.\n\n### Other Notes\n- For more info about benefits of using a tool like Anki, check out [Michael Nielsen's post \"Augmenting Long-term Memory\"](http://augmentingcognition.com/ltm.html).\n- Known issues may or may not get fixed depending on how annoying they get for me.\n- Besides making a useful tool, this project proved a good reason to learn Lua. However, if something doesn't work out for you because I missed something, sorry about that. Feel free to clone, tweak, and submit a pull request.",
+    "submodules": [],
+    "type": "Module"
+  }
+]
