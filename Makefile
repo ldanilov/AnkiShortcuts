@@ -22,7 +22,7 @@ docs:
 		--markdown \
 		--standalone \
 		Source
-	cat .docs_tmp/markdown/AnkiShortcuts.md .docs_tmp/markdown/index.md > README.md
+	cat .docs_tmp/markdown/$(SPOON).md .docs_tmp/markdown/index.md > README.md
 	mv .docs_tmp/docs.json Source/$(SPOON).spoon/
 	rm -rf .docs_tmp
 
