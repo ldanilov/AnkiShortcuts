@@ -179,7 +179,7 @@ end
 obj.spoonPath = script_path()
 
 local ankiCon = dofile(
-    obj.spoonPath .. "/ankiConV" .. obj.ankiConVersion .. '.lua'
+    obj.spoonPath .. "ankiConV" .. obj.ankiConVersion .. '.lua'
 )
 
 -- Internal Function - get any string of text which is selected by cursor.
