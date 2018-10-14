@@ -188,11 +188,8 @@ function _cursor_selection()
     hs.timer.usleep(20000)
     local selection = hs.pasteboard.getContents()
     local windowTitle = hs.window.focusedWindow():title()
-    if selection == priorSelection or selection == "" then
-        hs.alert.show(
-            [[Error: please, select some text 
-                                   OR 
-                       select some different text.]])
+    if selection == "" then
+        hs.alert.show('Error: please, select some text.')
     else
         return selection, windowTitle
     end
