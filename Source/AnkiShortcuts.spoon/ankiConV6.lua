@@ -104,9 +104,17 @@ function ankiCon:handleResponse(status, body, headers)
     self.status = status
     self.body = json.decode(body)
     self.headers = headers
-    if self.status == 200 and type(self.body.error) ~= 'string' then
-        self.is_success = true
-        self.result = self.body.result
+    if self.status == 200 then
+        if type(self.body) == 'function' then
+            self.is_success = false
+            self.error = 'Anki webserver responded with nothing. Did NOT add the Note. :('
+        elseif type(self.body.error) ~= 'string' then
+            self.is_success = true
+            self.result = self.body.result
+        else
+            self.is_success = false
+            self.error = 'Unknown error handling response from AnkiConnect.'
+        end
     elseif type(self.body.error) == 'string' then
         self.is_success = false
         self.error = self.body.error
