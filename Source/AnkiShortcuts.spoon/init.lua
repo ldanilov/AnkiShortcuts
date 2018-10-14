@@ -96,6 +96,8 @@
 --- ### Known Issues
 --- - Does not check if Anki app is running, so in that case Hammerspoon Console returns an obscure error.
 --- - It takes a few seconds to send the **first** Note to Anki. Subsequent Notes are sent in under a second.
+---    - (edit) On the second thought, the delay occurs **not** only during the first Note add. It varries a little, so be patient with it. :)
+---    - TODO: troubleshoot this
 ---
 --- ### Ideas
 --- - (easy) Add color to successful/unsuccessful addition of Q/A.
@@ -296,15 +298,29 @@ end
 function obj:sendNoteToAnki(how)
     self.question = _unicode2html(self.question)
     self.answer = _unicode2html(self.answer)
+    local context = _unicode2html(self:getContext())
+
     self.question, self.answer = _mask_answer(self.question, self.answer)
     local anki = ankiCon:new()
     if how == 'QAAQ' then
-        anki.actions.addTwoNotes.run(
-            self.question, self.answer, self.deckName, self.tag
+        anki.actions.addOneNote.run(
+            self.question .. context, 
+            self.answer, 
+            self.deckName, 
+            self.tag
+        )
+        anki.actions.addOneNote.run(
+            self.answer .. context, 
+            self.question, 
+            self.deckName, 
+            self.tag
         )
     else
         anki.actions.addOneNote.run(
-            self.question, self.answer, self.deckName, self.tag
+            self.question .. context, 
+            self.answer, 
+            self.deckName, 
+            self.tag
         )
     end
     if anki.is_success then
@@ -425,12 +441,11 @@ end
 
 function obj:setQuestion()
     self.question, self.winTitle = _cursor_selection()
-    self.question = self.question .. self:getContext()
 end
 
 function obj:setAnswerSend1Note()
-        self.answer, self.winTitle = _cursor_selection()
-        self:sendNoteToAnki("QA")
+    self.answer, self.winTitle = _cursor_selection()
+    self:sendNoteToAnki("QA")
 end
 
 function obj:setAnswerSend2Notes()

@@ -97,6 +97,8 @@ Download: [https://github.com/ldanilov/AnkiShortcuts/raw/master/Spoons/AnkiShort
 ### Known Issues
 - Does not check if Anki app is running, so in that case Hammerspoon Console returns an obscure error.
 - It takes a few seconds to send the **first** Note to Anki. Subsequent Notes are sent in under a second.
+   - (edit) On the second thought, the delay occurs **not** only during the first Note add. It varries a little, so be patient with it. :)
+   - TODO: troubleshoot this
 
 ### Ideas
 - (easy) Add color to successful/unsuccessful addition of Q/A.
