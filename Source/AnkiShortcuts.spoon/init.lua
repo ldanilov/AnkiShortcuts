@@ -4,6 +4,9 @@
 ---
 --- Download: [https://github.com/ldanilov/AnkiShortcuts/raw/master/Spoons/AnkiShortcuts.spoon.zip](https://github.com/ldanilov/AnkiShortcuts/raw/master/Spoons/AnkiShortcuts.spoon.zip)
 ---
+--- ### AnkiShortcuts Spoon Demo
+--- ![AnkiShortcuts Spoon Demo](https://github.com/ldanilov/AnkiShortcuts/raw/master/AnkiShortcutsDemo.gif)
+---
 --- ### AnkiShortcuts lets you:
 --- - **Send new Question/Answer** cards with simple shortcuts:
 ---    - `[Ctrl, Opt, Cmd] + [`
