@@ -95,7 +95,6 @@ Download: [https://github.com/ldanilov/AnkiShortcuts/raw/master/Spoons/AnkiShort
 - Run `make` after any updates to Source/* files. It regenerates `README.md`, `docs.json`, and `Spoons/AnkiShortcuts.spoon.zip`
 
 ### Known Issues
-- Some text, if selected as an Answer, will crash Hammerspoon. For example: ".."
 - Does not check if Anki app is running, so in that case Hammerspoon Console returns an obscure error.
 - It takes a few seconds to send the **first** Note to Anki. Subsequent Notes are sent in under a second.
 

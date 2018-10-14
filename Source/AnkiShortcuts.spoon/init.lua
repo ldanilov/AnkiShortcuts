@@ -94,7 +94,6 @@
 --- - Run `make` after any updates to Source/* files. It regenerates `README.md`, `docs.json`, and `Spoons/AnkiShortcuts.spoon.zip`
 ---
 --- ### Known Issues
---- - Some text, if selected as an Answer, will crash Hammerspoon. For example: ".."
 --- - Does not check if Anki app is running, so in that case Hammerspoon Console returns an obscure error.
 --- - It takes a few seconds to send the **first** Note to Anki. Subsequent Notes are sent in under a second.
 ---
@@ -244,6 +243,26 @@ function _mask_answer(question, answer)
     return question, answer
 end
 
+-- Internal Function - replaces all characters code point > 127 to HTML enities.
+--
+-- Parameters:
+--  * s - string which may contain unicode chars above 127
+--
+-- Returns:
+--  * out - same string with any unicode chars over code 127 converted to HTML entities.
+function _unicode2html(s)
+    if type(s) ~= 'string' then return '' end
+    local out = ''
+    for pos, c in utf8.codes(s) do 
+        if c > 127 then
+            out = out .. '&#' .. c .. ';'
+        else
+            out = out .. utf8.char(c)
+        end
+    end
+    return out
+end
+
 -- AnkiShortcuts:setCurrentDecks()
 -- Internal Method
 -- Gets a list of Anki Decks in alphabetical order and saves into currentDecks array.
@@ -278,6 +297,8 @@ end
 -- Returns:
 --  * None
 function obj:sendNoteToAnki(how)
+    self.question = _unicode2html(self.question)
+    self.answer = _unicode2html(self.answer)
     self.question, self.answer = _mask_answer(self.question, self.answer)
     local anki = ankiCon:new()
     if how == 'QAAQ' then
