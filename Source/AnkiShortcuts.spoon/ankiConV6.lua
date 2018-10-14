@@ -111,6 +111,9 @@ function ankiCon:handleResponse(status, body, headers)
         elseif type(self.body.error) ~= 'string' then
             self.is_success = true
             self.result = self.body.result
+        elseif type(self.body.error) == 'string' then
+            self.is_success = false
+            self.error = self.body.error
         else
             self.is_success = false
             self.error = 'Unknown error handling response from AnkiConnect.'
