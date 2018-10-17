@@ -18,6 +18,9 @@ Download: [https://github.com/ldanilov/AnkiShortcuts/raw/master/Spoons/AnkiShort
    - `[Ctrl, Opt, Cmd] + \`
       1. Does the same as **]**
       2. But instead of one card, it sends **two** cards, flipping Question in place of the Answer.
+   - `[Ctrl, Opt, Cmd] + =`
+      1. Does the same as **]**
+      2. But before sending the card to Anki, it lets you edit the Answer. Albeit in a too small of a text field for convenient editing for now.
 - `[Ctrl, Opt, Cmd] + D`
    1. **Get** all Deck Names from your Anki app.
    2. **Select** one of them to use going forward.
@@ -35,8 +38,8 @@ Download: [https://github.com/ldanilov/AnkiShortcuts/raw/master/Spoons/AnkiShort
    - works on v10.13.6
 - Anki v2.1
    - https://apps.ankiweb.net/index.html#mac
-- Hammerspoon v0.9.70
-   - https://github.com/Hammerspoon/hammerspoon/releases/tag/0.9.70
+- Hammerspoon v0.9
+   - https://github.com/Hammerspoon/hammerspoon/releases/tag/0.9.71
 - AnkiConnect v6
    - https://ankiweb.net/shared/info/2055492159
 
@@ -52,6 +55,7 @@ Download: [https://github.com/ldanilov/AnkiShortcuts/raw/master/Spoons/AnkiShort
        setTag = {hyper, "T"},
        setQuestion = {hyper, "["},
        setAnswerSend1Note = {hyper, "]"},
+       editAnswerSend1Note = {hyper, "="},
        setAnswerSend2Notes = {hyper, "\\"},
        toggleListener = {hyper, "N"},
        setContext = {hyper, "X"},

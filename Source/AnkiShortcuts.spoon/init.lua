@@ -17,6 +17,9 @@
 ---    - `[Ctrl, Opt, Cmd] + \`
 ---       1. Does the same as **]**
 ---       2. But instead of one card, it sends **two** cards, flipping Question in place of the Answer.
+---    - `[Ctrl, Opt, Cmd] + =`
+---       1. Does the same as **]**
+---       2. But before sending the card to Anki, it lets you edit the Answer. Albeit in a too small of a text field for convenient editing for now.
 --- - `[Ctrl, Opt, Cmd] + D`
 ---    1. **Get** all Deck Names from your Anki app.
 ---    2. **Select** one of them to use going forward.
@@ -34,8 +37,8 @@
 ---    - works on v10.13.6
 --- - Anki v2.1
 ---    - https://apps.ankiweb.net/index.html#mac
---- - Hammerspoon v0.9.70
----    - https://github.com/Hammerspoon/hammerspoon/releases/tag/0.9.70
+--- - Hammerspoon v0.9
+---    - https://github.com/Hammerspoon/hammerspoon/releases/tag/0.9.71
 --- - AnkiConnect v6
 ---    - https://ankiweb.net/shared/info/2055492159
 ---
@@ -51,6 +54,7 @@
 ---        setTag = {hyper, "T"},
 ---        setQuestion = {hyper, "["},
 ---        setAnswerSend1Note = {hyper, "]"},
+---        editAnswerSend1Note = {hyper, "="},
 ---        setAnswerSend2Notes = {hyper, "\\"},
 ---        toggleListener = {hyper, "N"},
 ---        setContext = {hyper, "X"},
@@ -451,6 +455,23 @@ function obj:setAnswerSend1Note()
     self:sendNoteToAnki("QA")
 end
 
+function obj:editAnswerSend1Note()
+    self.answer, self.winTitle = _cursor_selection()
+    local button, value = hs.dialog.textPrompt(
+        'Answer', 
+        '', 
+        self.answer, 
+        'Send to Anki', 
+        'Cancel'
+    )
+    if button == 'Cancel' then 
+        hs.alert.show('Canceled', 1)
+    else
+        self.answer = value
+        self:sendNoteToAnki('QA')
+    end
+end
+
 function obj:setAnswerSend2Notes()
     self.answer, self.winTitle = _cursor_selection()
     self:sendNoteToAnki("QAAQ")
@@ -530,6 +551,14 @@ function obj:bindHotkeys(m)
         m.setAnswerSend1Note[1], 
         m.setAnswerSend1Note[2], 
         function() self:setAnswerSend1Note() end
+    )
+    -- EDIT cursor selection into ANSWER variable.
+    -- and
+    -- SEND one Note to Anki.
+    hs.hotkey.bind(
+        m.editAnswerSend1Note[1], 
+        m.editAnswerSend1Note[2], 
+        function() self:editAnswerSend1Note() end
     )
     -- SAVE current selection into ANSWER variable.
     -- and
