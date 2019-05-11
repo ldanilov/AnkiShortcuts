@@ -33,14 +33,16 @@
 ---
 --- ## Getting Started
 --- ### Prerequisites
---- - macOS High Sierra 
----    - works on v10.13.6
+--- - macOS
+---    - High Sierra
+---    - Mojave
 --- - Anki v2.1
 ---    - https://apps.ankiweb.net/index.html#mac
+---    - AnkiConnect v6 (Anki Add-on)
+---       - Install using the following add-on code: `2055492159`
+---       - Add-on Info: https://ankiweb.net/shared/info/2055492159
 --- - Hammerspoon v0.9
----    - https://github.com/Hammerspoon/hammerspoon/releases/tag/0.9.71
---- - AnkiConnect v6
----    - https://ankiweb.net/shared/info/2055492159
+---    - https://github.com/Hammerspoon/hammerspoon/releases
 ---
 --- ### Installing
 --- 1. Install Prerequisites
