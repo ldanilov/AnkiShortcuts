@@ -269,6 +269,24 @@ function _unicode2html(s)
     return out
 end
 
+-- Internal Function - discards all non-ascii non-characters from a string.
+--
+-- Parameters:
+--  * s - string which may contain unicode chars above 126 and below 32.
+--
+-- Returns:
+--  * out - same string with any unicode chars over code 126 and under 32 discarded.
+function _unicode2ascii(s)
+    if type(s) ~= 'string' then return '' end
+    local out = ''
+    for pos, c in utf8.codes(s) do 
+        if c < 127 and c > 31 then
+            out = out .. utf8.char(c)
+        end
+    end
+    return out
+end
+
 -- AnkiShortcuts:setCurrentDecks()
 -- Internal Method
 -- Gets a list of Anki Decks in alphabetical order and saves into currentDecks array.
@@ -305,6 +323,7 @@ end
 function obj:sendNoteToAnki(how)
     self.question = _unicode2html(self.question)
     self.answer = _unicode2html(self.answer)
+    self.tag = _unicode2ascii(self.tag)
     local context = _unicode2html(self:getContext())
 
     self.question, self.answer = _mask_answer(self.question, self.answer)
