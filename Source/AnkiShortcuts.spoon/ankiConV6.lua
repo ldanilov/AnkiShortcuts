@@ -1,7 +1,15 @@
-local json = require('json')
-
 local ankiCon = {}
 ankiCon.__index = ankiCon
+
+-- Internal Function used to find our location, so we know where to load files from
+local function script_path()
+    local str = debug.getinfo(2, "S").source:sub(2)
+    return str:match("(.*/)")
+end
+
+ankiCon.spoonPath = script_path()
+
+local json = dofile(ankiCon.spoonPath .. "json.lua")
 
 ankiCon.serverUrl = 'http://localhost:8765'
 ankiCon.version = 6

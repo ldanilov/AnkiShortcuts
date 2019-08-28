@@ -121,17 +121,28 @@
 --- - Known issues may or may not get fixed depending on how annoying they get for me.
 --- - Besides making a useful tool, this project proved a good reason to learn Lua. However, if something doesn't work out for you because I missed something, sorry about that. Feel free to clone, tweak, and submit a pull request.
 
-local json = require('json')
-
 local obj = {}
 obj.__index = obj
 
 -- Metadata
 obj.name = "AnkiShortcuts"
-obj.version = "0.1"
+obj.version = "0.2"
 obj.author = "Lev Danilov"
 obj.homepage = "https://github.com/ldanilov/AnkiShortcuts"
 obj.license = "MIT - https://opensource.org/licenses/MIT"
+
+-- Internal Function used to find our location, so we know where to load files from
+local function script_path()
+    local str = debug.getinfo(2, "S").source:sub(2)
+    return str:match("(.*/)")
+end
+
+obj.spoonPath = script_path()
+
+local json = dofile(
+    obj.spoonPath .. "json.lua")
+local ankiCon = dofile(
+    obj.spoonPath .. "ankiConV" .. obj.ankiConVersion .. '.lua')
 
 function obj:init()
     obj.question = ''
@@ -180,17 +191,6 @@ obj.ankiConUrl = getSetting('ankiConUrl', 'http://localhost:8765')
 --- Version of the AnkiConnect Plug-in from https://github.com/FooSoft/anki-connect
 --- (Default: 6)
 obj.ankiConVersion = getSetting('ankiConVersion', 6)
-
--- Internal Function used to find our location, so we know where to load files from
-local function script_path()
-    local str = debug.getinfo(2, "S").source:sub(2)
-    return str:match("(.*/)")
-end
-obj.spoonPath = script_path()
-
-local ankiCon = dofile(
-    obj.spoonPath .. "ankiConV" .. obj.ankiConVersion .. '.lua'
-)
 
 -- Internal Function - get any string of text which is selected by cursor.
 function _cursor_selection()
